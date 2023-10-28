@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./FormStyles.css";
 import Modal from "./Modal.js";
+import InputComp from "./InputComp.js";
+import { inputLoanContext } from "../contexts/inputContext.js";
 
 function LoanForm() {
   useEffect(() => {
@@ -39,10 +41,19 @@ function LoanForm() {
 
   const btnIsDisabled =
     formInputs.name === "" || formInputs.phone === "" || formInputs.age === "";
+
+  function handleNameChange(value) {
+    setFormInputs({ ...formInputs, name: value });
+  }
+  function handlePhoneChange(value) {
+    setFormInputs({ ...formInputs, phone: value });
+  }
+  function handleAgeChange(value) {
+    setFormInputs({ ...formInputs, age: value });
+  }
   return (
     <div
       className="flex"
-      style={{ height: "100vh" }}
       onClick={() => {
         setShowModal(false);
       }}
@@ -50,36 +61,39 @@ function LoanForm() {
       <form id="loan-form">
         <h1 style={{ textAlign: "center" }}>Request Loan Form</h1>
         <hr />
-        <div className="form-group">
-          <label>Name</label>
-          <input
-            type="text"
-            value={formInputs.name}
-            onChange={(e) => {
-              setFormInputs({ ...formInputs, name: e.target.value });
-            }}
-          />
-        </div>
-        <div className="form-group">
-          <label>Phone Number</label>
-          <input
-            type="text"
-            value={formInputs.phone}
-            onChange={(e) => {
-              setFormInputs({ ...formInputs, phone: e.target.value });
-            }}
-          />
-        </div>
-        <div className="form-group">
-          <label>Age</label>
-          <input
-            type="number"
-            value={formInputs.age}
-            onChange={(e) => {
-              setFormInputs({ ...formInputs, age: e.target.value });
-            }}
-          />
-        </div>
+        <inputLoanContext.Provider
+          value={{
+            label: "Name",
+            value: formInputs.name,
+            onChange: handleNameChange,
+            type: "text",
+          }}
+        >
+          <InputComp />
+        </inputLoanContext.Provider>
+
+        <inputLoanContext.Provider
+          value={{
+            label: "Phone Number",
+            value: formInputs.phone,
+            onChange: handlePhoneChange,
+            type: "text",
+          }}
+        >
+          <InputComp />
+        </inputLoanContext.Provider>
+
+        <inputLoanContext.Provider
+          value={{
+            label: "Age",
+            value: formInputs.age,
+            onChange: handleAgeChange,
+            type: "number",
+          }}
+        >
+          <InputComp />
+        </inputLoanContext.Provider>
+
         <div
           className="form-group"
           style={{ display: "flex", gap: "10px", alignItems: "center" }}

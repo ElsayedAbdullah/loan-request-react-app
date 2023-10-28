@@ -1,0 +1,30 @@
+.icon-button {
+  transition: 0.3s ease-in-out;
+  background-color: #fff !important;
+}
+
+.icon-button svg {
+  font-size: 18px;
+}
+
+.icon-button.check {
+  border: 3px solid #8bc34a;
+  color: #8bc34a;
+}
+.icon-button.check.active {
+  background-color: #8bc34a !important;
+  color: #fff;
+}
+.icon-button.edit {
+  color: #1769aa;
+  border: 3px solid #1769aa;
+}
+.icon-button.delete {
+  border: 3px solid #b23c17;
+  color: #b23c17;
+}
+
+.icon-button:hover {
+  background-color: #eee !important;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+}

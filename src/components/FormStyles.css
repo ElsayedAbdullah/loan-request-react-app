@@ -21,12 +21,12 @@
 }
 
 #loan-form {
-  background: #4834d4;
+  background: #9c27b0;
   color: white;
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.4);
-  width: 50%;
+  width: 70%;
 }
 
 .form-group {
@@ -47,7 +47,7 @@ select {
   font-size: 20px;
   padding: 10px;
   border-radius: 5px;
-  background: #be2edd;
+  background: #ffc107;
   color: white;
   cursor: pointer;
 }
